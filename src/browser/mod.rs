@@ -29,7 +29,7 @@ pub use fetcher::FetcherOptions;
 pub mod context;
 #[cfg(feature = "fetch")]
 mod fetcher;
-mod process;
+pub mod process;
 pub mod tab;
 pub mod transport;
 
