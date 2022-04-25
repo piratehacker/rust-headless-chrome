@@ -390,7 +390,7 @@ impl Browser {
     pub fn is_open(&self) -> bool {
         self.inner.transport.open.load(Ordering::SeqCst)
     }
-}
+
 
     /// Call a browser method.
     ///
