@@ -59,7 +59,7 @@ pub struct Transport {
     web_socket_connection: Arc<WebSocketConnection>,
     waiting_call_registry: Arc<WaitingCallRegistry>,
     listeners: Listeners,
-    open: Arc<AtomicBool>,
+    pub open: Arc<AtomicBool>,
     call_id_counter: Arc<AtomicU32>,
     loop_shutdown_tx: Mutex<mpsc::SyncSender<()>>,
 }

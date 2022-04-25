@@ -1,6 +1,7 @@
 use std::sync::mpsc;
 use std::sync::mpsc::{RecvTimeoutError, TryRecvError};
 use std::sync::Arc;
+use std::sync::atomic::Ordering;
 use std::sync::Mutex;
 use std::time::Duration;
 
@@ -75,9 +76,9 @@ pub struct Browser {
 }
 
 pub struct BrowserInner {
-    pub process: Option<Process>,
-    pub transport: Arc<Transport>,
-    pub tabs: Arc<Mutex<Vec<Arc<Tab>>>>,
+    process: Option<Process>,
+    transport: Arc<Transport>,
+    tabs: Arc<Mutex<Vec<Arc<Tab>>>>,
     loop_shutdown_tx: mpsc::SyncSender<()>,
 }
 
@@ -385,6 +386,11 @@ impl Browser {
             info!("Finished browser's event handling loop");
         });
     }
+
+    pub fn is_open(&self) -> bool {
+        self.inner.transport.open.load(Ordering::SeqCst)
+    }
+}
 
     /// Call a browser method.
     ///
