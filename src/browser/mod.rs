@@ -75,9 +75,9 @@ pub struct Browser {
 }
 
 pub struct BrowserInner {
-    process: Option<Process>,
-    transport: Arc<Transport>,
-    tabs: Arc<Mutex<Vec<Arc<Tab>>>>,
+    pub process: Option<Process>,
+    pub transport: Arc<Transport>,
+    pub tabs: Arc<Mutex<Vec<Arc<Tab>>>>,
     loop_shutdown_tx: mpsc::SyncSender<()>,
 }
 
