@@ -71,7 +71,7 @@ pub mod transport;
 /// ["Browser" domain](https://chromedevtools.github.io/devtools-protocol/tot/Browser)
 /// (such as for resizing the window in non-headless mode), we currently don't implement those.
 pub struct Browser {
-    inner: Arc<BrowserInner>,
+    pub inner: Arc<BrowserInner>,
 }
 
 pub struct BrowserInner {
